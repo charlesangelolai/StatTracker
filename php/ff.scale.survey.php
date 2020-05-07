@@ -6,7 +6,7 @@ if(!isset($_SESSION['token'])) {
     header("Location: ..lindex.php?origin=ffp&err=no_credz");
     exit();
 }
-require_once 'config.php';
+require_once 'table.data.config.php';
 $_SESSION['fform'] = $_POST['fform'];
 $_SESSION['scale'] = $_POST['scale'];
 

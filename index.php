@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'php/config.php';
+require 'php/table.data.config.php';
 if (isset($_SESSION)) {
     if (isset($_SESSION['token'])) {
         $token = $_SESSION['token'];
@@ -32,18 +32,7 @@ if (isset($_SESSION)) {
     <script src="js/functions.js"></script>
     </head>
     <body>
-        <ul id="nav">
-            <li><a href="#">Theme</a>
-                <ul class="dropdown">
-                    <li><a href="#">0x1050</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                </ul>
-            </li>
-            <li><a href="#">About</a></li>
-        </ul>
+        <h1 class="frontpage">StatTracker</h1>
         <div id="form">
             &nbsp;
         </div>
