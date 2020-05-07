@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	user-select: none;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	background: url(imgs/sudo-bg.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #474B4F;
+}
+
+/**************************************/
+/********** Start of Sidebar **********/
+/***************************************/
+.sidebar {
+	position: fixed;
+	width: 250px;
+	height: 100%;
+	left: 0;
+	background: #1b1b1b;
+}
+
+.sidebar .text {
+	color: #86C232;
+	font-size: 25px;
+	font-weight: 600;
+	line-height: 65px;
+	text-align: center;
+	background: #1e1e1e;
+	letter-spacing: 1px;
+}
+
+.sidebar .user {
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 65px;
+	text-align: center;
+	background: #61892F;
+	letter-spacing: 1px;
+}
+
+nav {
+	height: 100vh;
+}
+
+nav ul {
+	background: #1b1b1b;
+	height: 100%;
+	width: 100%;
+	list-style: none;
+	font-family: 'Montserrat', sans-serif;
+}
+
+nav ul li {
+	line-height: 60px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav ul li a {
+	position: relative;
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	padding-left: 40px;
+	font-weight: 500;
+	display: block;
+	width: 100%;
+	border-left: 3px solid transparent;
+}
+
+nav ul li a:hover {
+	color: #86c232;
+	background: #1e1e1e;
+	border-left-color: #86c232;
+}
+
+nav ul ul li {
+	line-height: 42px;
+	border-bottom: none;
+}
+
+nav ul ul li a {
+	font-size: 17px;
+	color: #e6e6e6;
+	padding-left: 80px;
+}
+
+nav ul li a span {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+	font-size: 22px;
+}
+
+nav ul li a:hover span {
+	transform: translateY(-50%) rotate(-180deg);
+}
+
+nav ul ul {
+	display: none;
+}
+
+nav ul li:hover ul {
+	display: block;
+}
+
+nav ul li a:hover span {
+	transform: translateY(-50%) rotate(-180deg);
+}
+
+#nav {
+	display: none;
+}
+
+/**************************************/
+/*********** End of Sidebar ***********/
+/**************************************/
+
+/**************************************/
+/*********** Start of Forms ***********/
+/**************************************/
+#form {
+	display: none;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	width: 30%;
+	text-align: left;
+	border-radius: 5px;
+	border: .2em solid #000;
+	padding: 1em;
+	position: absolute;
+	top: 50%;
+	left: 55%;
+	margin: auto;
+	margin-right: -50%;
+	transform: translate(-50%, -50%)
+}
+
+input {
+	padding: 1em;
+	text-align: center;
+	margin: .2em;
+	border: none;
+	background-color: #fff;
+}
+
+.likert, #login, #ffscale {
+	text-align: center;
+}
+/**************************************/
+/************ End of Forms ************/
+/**************************************/
