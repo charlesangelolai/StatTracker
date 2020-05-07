@@ -1,17 +1,10 @@
 <?php
 session_start();
 if (!isset($_SESSION['token'])) {
-<<<<<<< HEAD
-	mysqli_close($conn);
-	session_destroy();
-	header("Location: index.php");
-	exit();
-=======
     mysqli_close($conn);
     session_destroy();
     header("Location: index.php?origin=sur&err=no_ses");
     exit();
->>>>>>> upstream/master
 }
 require_once 'php/config.php';
 
@@ -27,37 +20,28 @@ if (!isset($_SESSION['user'])) { //I'm aware that this leaks the username, but o
 <!DOCTYPE html>
 <html>
     <head>
-<<<<<<< HEAD
-	<meta charset="utf-8">
-	<title></title>
-	<link rel="stylesheet" href="css/sudo.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-	<script src="js/functions.js"></script>
+        <meta charset="utf-8">
+        <title>Welcome to the survey!</title>
+        <link rel="preload" href="css/main.css" as="style">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <script src="js/functions.js"></script>
     </head>
-    <body>
-
-	<!-- Start of Navbar -->
-	<!-- Add to CSS to remove:
-		#nav {
-			display: none;
-		}
-	-->
-	<ul id="nav">
-		<li><a href="#">Survey</a></li>
-		<li><a href="#">Group Rankings</a></li>
-		<li><a href="#">Theme<span class="fas fa-caret-down"></span></a>
-			<ul>
-				<li><a href="#">0x1050</a></li>
-				<li><a href="#">sudo</a></li>
-				<li><a href="#">Adrian</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-			</ul>
-		</li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Log Out</a></li>
-	</ul>
-	<!-- End of Navbar -->
+<body>
+        <ul id="nav">
+        <li><p>Welcome,<?php echo $_SESSION['user']; ?></p></li>
+            <li><a href="#">Theme</a>
+                <ul class="dropdown">
+                    <li><a href="#">0x1050</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+            </li>
+            <li><a href="#">About</a>
+            <li><a href="php/logout.php">log out</a><li>
+        </ul>
 
 	<!-- Start of Sidebar -->
 	<!-- Add to CSS to remove:
@@ -86,86 +70,28 @@ if (!isset($_SESSION['user'])) { //I'm aware that this leaks the username, but o
 	</nav>
 	<!-- End of Sidebar -->
 
-	<div id="form">
-	    &nbsp;
-	</div>
-    </body>
-<?php
-if (!isset($_SESSION['like']) && !isset($_SESSION['dlike'])) {
-	echo "<script type='text/javascript'>
-		loadFragment('forms/ff.scale.survey.html', document.getElementById('form'));
-	  </script>";
-}
-else if (!isset($_SESSION['l1']) &&
-      !isset($_SESSION['l2']) &&
-      !isset($_SESSION['l3']) &&
-      !isset($_SESSION['d1']) &&
-      !isset($_SESSION['d2']) &&
-      !isset($_SESSION['d3']) ) {
-    echo "<script type='text/javascript'>
-	    loadFragment('forms/categories.survey.html', document.getElementById('form'));
-    </script>";
-}
-else  if (!isset($_SESSION['fform']) &&
-      !isset($_SESSION['scale']) ) {
-    echo "<script type='text/javascript'>
-	    loadFragment('forms/ff.scale.survey.html', document.getElementById('form'));
-    </script>";
-=======
-        <meta charset="utf-8">
-        <title>Welcome to the survey!</title>
-        <link rel="preload" href="css/main.css" as="style">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/functions.js"></script>
-    </head>
-<body>
-        <ul id="nav">
-        <li><p>Welcome,<?php echo $_SESSION['user']; ?></p></li>
-            <li><a href="#">Theme</a>
-                <ul class="dropdown">
-                    <li><a href="#">0x1050</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                </ul>
-            </li>
-            <li><a href="#">About</a>
-            <li><a href="php/logout.php">log out</a><li>
-        </ul>
-
 <div id="form">
 <?php
 //------------------------------------------First survey
 if (!isset($_SESSION['like']) || !isset($_SESSION['dlike'])) {
     echo "<form id='categories' action='php/category.survey.php' method='post' enctype='multipart/form-data'>
         <div class=\"left\">
-
         <h1>What did you like the most about this project?</h1>
-
             <div class=\"radios\">
-
             <input type=\"radio\" class=\"rad\" value=\"A\" id=\"lA\" name=\"like\" onclick=\"uncheck('rA');left='A';check('l')\"><label>The project's use of technology</label><br>
             <input type=\"radio\" class=\"rad\" value=\"B\" id=\"lB\" name=\"like\" onclick=\"uncheck('rB');left='B';check('l')\"><label></label>The user interface<br>
             <input type=\"radio\" class=\"rad\" value=\"C\" id=\"lC\" name=\"like\" onclick=\"uncheck('rC');left='C';check('l')\"><label></label>Other<br>
             </div>
-
         </div>
-
             <div class=\"right\">
-
             <h1>What did you like the least?</h1>
-
             <div class=\"radios\">
-
             <input type=\"radio\" class=\"rad\" value=\"A\" id=\"rA\" name=\"dlike\" onclick=\"uncheck('lA');right='A';check('r')\"><label>The project's use of tecnology</label><br>
             <input type=\"radio\" class=\"rad\" value=\"B\" id=\"rB\" name=\"dlike\" onclick=\"uncheck('lB');right='B';check('r')\"><label></label>The user interface<br>
             <input type=\"radio\" class=\"rad\" value=\"C\" id=\"rC\" name=\"dlike\" onclick=\"uncheck('lC');right='C';check('r')\"><label></label>Other<br>
             </div>
-
         </div>
         </form>
-
         <script src=\"js/category.js\"></script>
 ";
 }
@@ -268,7 +194,6 @@ elseif (!isset($_SESSION['l1'])       ||
         <form id='likert' action='php/likert.survey.php' method='post' enctype='multipart/form-data'>
         <div class='left'>
             <h2>$like1</h2>
-
             <div class=\"radios\">
             <input type='radio' name='l1' id='l1' value='$lln' onclick=\"buttonCheck()\"><label>$ll</label><p>
             <input type='radio' name='l1' id='l2' value='$ln' onclick=\"buttonCheck()\"><label>$l</label><p>
@@ -277,9 +202,7 @@ elseif (!isset($_SESSION['l1'])       ||
             <input type='radio' name='l1' id='l5' value='$rrn' onclick=\"buttonCheck()\"><label>$rr</label><p>
             <input type='radio' name='l1' id='l6' class='hidden' value='0' checked>
             </div>
-
             <h2>$like2</h2>
-
             <div class=\"radios\">
             <input type='radio' name='l2' id='l1' value='$lln' onclick=\"buttonCheck()\"><label>$ll</label><p>
             <input type='radio' name='l2' id='l2' value='$ln' onclick=\"buttonCheck()\"><label>$l</label><p>
@@ -288,9 +211,7 @@ elseif (!isset($_SESSION['l1'])       ||
             <input type='radio' name='l2' id='l5' value='$rrn' onclick=\"buttonCheck()\"><label>$rr</label><p>
             <input type='radio' name='l2' id='l6' class='hidden' value='0' checked>
             </div>
-
             <h2>$like3</h2>
-
             <div class=\"radios\">
             <input type='radio' name='l3' id='l1' value='$lln' onclick=\"buttonCheck()\"><label>$ll</label><p>
             <input type='radio' name='l3' id='l2' value='$ln' onclick=\"buttonCheck()\"><label>$l</label><p>
@@ -300,10 +221,8 @@ elseif (!isset($_SESSION['l1'])       ||
             <input type='radio' name='l3' id='l6' class='hidden' value='0' checked>
             </div>
         </div>
-
         <div class='right'>
             <h2>$dlike1</h2>
-
             <div class=\"radios\">
             <input type='radio' name='d1' id='r1' value='$lln' onclick=\"buttonCheck()\"><label>$ll</label><p>
             <input type='radio' name='d1' id='r2' value='$ln' onclick=\"buttonCheck()\"><label>$l</label><p>
@@ -312,9 +231,7 @@ elseif (!isset($_SESSION['l1'])       ||
             <input type='radio' name='d1' id='r5' value='$rrn' onclick=\"buttonCheck()\"><label>$rr</label><p>
             <input type='radio' name='d1' id='r6' class='hidden' value='0' checked>
             </div>
-
             <h2>$dlike2</h2>
-
             <div class=\"radios\">
             <input type='radio' name='d2' id='r1' value='$lln' onclick=\"buttonCheck()\"><label>$ll</label><p>
             <input type='radio' name='d2' id='r2' value='$ln' onclick=\"buttonCheck()\"><label>$l</label><p>
@@ -323,9 +240,7 @@ elseif (!isset($_SESSION['l1'])       ||
             <input type='radio' name='d2' id='r5' value='$rrn' onclick=\"buttonCheck()\"><label>$rr</label><p>
             <input type='radio' name='d2' id='r6' class='hidden' value='0' checked>
             </div>
-
             <h2>$dlike3</h2>
-
             <div class=\"radios\">
             <input type='radio' name='d3' id='r1' value='$lln' onclick=\"buttonCheck()\"><label>$ll</label><p>
             <input type='radio' name='d3' id='r2' value='$ln' onclick=\"buttonCheck()\"><label>$l</label><p>
@@ -347,7 +262,6 @@ echo "<form id=\"freeform\" action=\"php/ff.scale.survey.php\" method=\"post\" e
     the developers of this project?</h1>
         <input type=\"text\" name=\"ff\">
     </div>
-
     <div id=\"scale\">
         <h1>Finally, how many stars would you give this project?</h1>
         <input type=\"radio\" name=\"scale\" value=\"1\">
@@ -371,7 +285,6 @@ echo "<form id=\"freeform\" action=\"php/ff.scale.survey.php\" method=\"post\" e
         <input type=\"radio\" name=\"scale\" value=\"10\">
         <label class=\"scale10\"></label>
     </div>
-
     <input type=\"submit\" name=\"submit\" value=\"submit\">
 </form>
 ";
@@ -381,7 +294,6 @@ else {
 echo "<form id=\"finishline\">
     <h1>Thank You!</h1>
 </form>";
->>>>>>> upstream/master
 }
 ?>
 </div>
